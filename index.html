@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planet Head: Rocket Landing</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #05060f; color: #fff;
+      font-family: system-ui, sans-serif; overflow: hidden; }
+    #stage { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    /* mirror video + 3D together so it behaves like a mirror */
+    #mirror { position: relative; width: 100%; height: 100%; transform: scaleX(-1); }
+    #mirror video, #mirror canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    #overlay { position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px; background: #05060fee; z-index: 10; }
+    button { font-size: 1.1rem; padding: 12px 28px; border: 0; border-radius: 8px;
+      background: #f2b134; color: #111; cursor: pointer; }
+    #status { opacity: .8; font-size: .9rem; min-height: 1.2em; }
+    #hud { position: fixed; left: 12px; bottom: 10px; font-size: .8rem; opacity: .75;
+      z-index: 5; white-space: pre; line-height: 1.5; }
+    #recBtn { position: fixed; top: 12px; right: 12px; z-index: 6; font-size: .95rem;
+      padding: 8px 18px; }
+    #recBtn.recording { background: #e5484d; color: #fff; }
+  </style>
+</head>
+<body>
+  <div id="stage"><div id="mirror"><video id="video" playsinline muted></video></div></div>
+  <div id="hud"></div>
+  <button id="recBtn">● Record</button>
+  <div id="overlay">
+    <h1>Planet Head</h1>
+    <p>Keys: <b>M</b> Moon / Mars · <b>R</b> record · <b>L</b> log stats to console</p>
+    <button id="startBtn">Start camera</button>
+    <div id="status"></div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
